@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Drawing;
 using System.Net.NetworkInformation;
@@ -23,12 +24,12 @@ namespace Chess.Pages
                 {0,1,0,1,0,1,0,1},
                 {1,0,1,0,1,0,1,0}
                    };
-        
+
 
 
 
         private readonly ILogger<IndexModel> _logger;
-        
+
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -71,13 +72,24 @@ namespace Chess.Pages
             pieces.Add(new Piece(Piece.PieceColor.White, Piece.PieceType.Bishop, KeyValuePair.Create(7, 5)));
             pieces.Add(new Piece(Piece.PieceColor.White, Piece.PieceType.Queen, KeyValuePair.Create(7, 3)));
             pieces.Add(new Piece(Piece.PieceColor.White, Piece.PieceType.King, KeyValuePair.Create(7, 4)));
-            
 
 
 
 
+            pieces.First(p => p.chessPiecePosition.Key == 1 && p.chessPiecePosition.Value == 0).Move(KeyValuePair.Create(4, 4));
 
         }
+
+        
+        public void PieceMove() {
+
+            //pieces.Clear();
+            pieces.First(p => p.chessPiecePosition.Key == 2 && p.chessPiecePosition.Value == 0).Move(KeyValuePair.Create(5, 4));
+
+        }
+
+
+    
 
 
 

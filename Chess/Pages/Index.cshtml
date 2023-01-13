@@ -1,4 +1,5 @@
 ﻿@page
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -16,7 +17,7 @@
         <tr>
             @for (int col = 0; col < 8; col++)
             {
-                <td style="width:50px;height:50px;background-color:@(Model.board[row, col] == 0 ? "black" : "white")">
+                <td style="width:50px;height:50px;background-color:@(Model.board[row, col] == 0 ? "#B58863" : "#F0D9B5")">
 
             
                     
@@ -26,7 +27,13 @@
                         {
 
                             
-                            <img src=" @p.PieceImageSource" alt="piece image" />
+
+                                <img src=" @p.PieceImageSource" alt="piece image" />
+                            
+                               
+
+                            
+                            
                            
                            
                         }
