@@ -5,6 +5,43 @@
 }
 
 <div class="text-center">
+    
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<table>
+    
+    @for (int row = 0; row < 8; row++)
+    {
+        <tr>
+            @for (int col = 0; col < 8; col++)
+            {
+                <td style="width:50px;height:50px;background-color:@(Model.board[row, col] == 0 ? "black" : "white")">
+
+            
+                    
+            @foreach (Piece p in Model.pieces)
+                    {
+                        if (p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == col)
+                        {
+
+                            
+                            <img src=" @p.PieceImageSource" alt="piece image" />
+                           
+                           
+                        }
+
+                    }
+
+
+
+                        
+                       
+                    
+                    
+                    
+                </td>
+            }
+        </tr>
+    }
+</table>
