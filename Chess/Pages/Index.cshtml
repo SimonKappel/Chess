@@ -19,39 +19,43 @@
             @for (int col = 0; col < 8; col++)
             {
                     
-                <td  style="width:50px;height:50px;background-color:@(Model.board[row, col] == 0 ? "#B58863" : "#F0D9B5")">
-                  @*  <form method="post">
-                        <button name="test"></button>
-                    </form>*@
+                
+
+                   
+                <td style="width:50px;height:50px;background-color:@(Model.board[row, col] == 0 ? "#B58863" : "#F0D9B5")">
+
+                    <form method="post">
+
+                        <button style="width:50px;height:50px; background: transparent;
+    border: none !important;
+    font-size:0; " name="position" value=@row,@col>
+                            @foreach (Piece p in ChessGame.pieces)
+                            {
+                                if (p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == col)
+                                {
 
 
 
-
-
-                    @foreach (Piece p in ChessGame.pieces)
-                    {
-                        if (p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == col)
-                        {
-
-                                            
-                            <form method="post">
-                                @*<button style="width:50px;height:50px; display:contents;" name="@(new KeyValuePair<int, int>(row, col);) ">*@
-                                <button style="width:50px;height:50px; display:contents;" name="position" value=@row,@col>
                                     <img src=" @p.PieceImageSource" alt="piece image" />
-                                    
-                                  
-                               </button>
-                            
-                            </form>
-                               
 
-                            
-                            
-                           
-                           
-                        }
 
-                    }
+
+
+
+
+
+
+
+                                }
+
+                            }
+
+                    </button>
+
+                    </form>
+
+
+                  
 
 
 
@@ -61,7 +65,7 @@
                     
                     
                 </td>
-               
+                
                 
             }
         </tr>

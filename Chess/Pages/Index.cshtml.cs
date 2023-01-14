@@ -15,7 +15,7 @@ namespace Chess.Pages
 
 
 
-
+        
 
        
 
@@ -104,22 +104,71 @@ namespace Chess.Pages
         
         public IActionResult OnPost(string position)
         {
+            
             //first char of position is the row, second char is the column
-           
+
+
             int row = int.Parse(position[0].ToString());
             int column = int.Parse(position[2].ToString());
 
             //pieces.Add(new Piece(Piece.PieceColor.Black, Piece.PieceType.Pawn, KeyValuePair.Create(row, column)));
-            ChessGame.pieces.RemoveAt(ChessGame.pieces.FindIndex(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column));
+            // ChessGame.pieces.RemoveAt(ChessGame.pieces.FindIndex(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column));
+            if (ChessGame.augewähltesPiece != null)
+            {
+                foreach (Piece p in ChessGame.pieces)
+                {
+                    if (p.chessPiecePosition.Equals(KeyValuePair.Create(row, column)) && p.Color.Equals(ChessGame.augewähltesPiece.Color))
+                    {
+                        ChessGame.augewähltesPiece = ChessGame.pieces.Find(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column);
+                        break;
+                    }
+                   
+                }
+                ChessGame.pieces.Find(p => p.Equals(ChessGame.augewähltesPiece)).Move(KeyValuePair.Create(row, column));
+                ChessGame.augewähltesPiece = null;
 
-            
+            }
+            else {
+                ChessGame.augewähltesPiece = ChessGame.pieces.Find(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column);
+            }
+        
+
+           
+
 
 
             return Page();
         }
+        //public IActionResult OnPostfeld(string position)
+        //{
+        //    //first char of position is the row, second char is the column
+
+        //    int row = int.Parse(position[0].ToString());
+        //    int column = int.Parse(position[2].ToString());
+
+        //    //pieces.Add(new Piece(Piece.PieceColor.Black, Piece.PieceType.Pawn, KeyValuePair.Create(row, column)));
+        //    // ChessGame.pieces.RemoveAt(ChessGame.pieces.FindIndex(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column));
+        //   foreach(Piece p in ChessGame.pieces)
+        //  {
+        //        if (p.chessPiecePosition.Equals(KeyValuePair.Create(row, column)) && p.Color.Equals(augewähltesPiece.Color))
+        //        {
+        //            ChessGame.pieces.Find(p => p.chessPiecePosition.Key == row && p.chessPiecePosition.Value == column);
+        //        }
+        //        else {
+        //            augewähltesPiece.Move(KeyValuePair.Create(row, column));
+        //        }
+        //    }
+           
+          
+            
+           
+           
+        //    return Page();
+        //}
 
 
 
+        
 
 
 

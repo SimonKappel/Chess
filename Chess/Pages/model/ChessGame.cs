@@ -2,6 +2,7 @@
 {
     public static class ChessGame
     {
+        public static Piece? augewähltesPiece;
         public static List<Piece> pieces = new List<Piece>() {
 
            new Piece(Piece.PieceColor.Black, Piece.PieceType.Pawn, KeyValuePair.Create(1, 0)),
